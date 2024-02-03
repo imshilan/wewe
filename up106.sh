@@ -96,7 +96,7 @@ do
 			echo " "
 			if [ "$answer" != "${answer#[Yy]}" ]; then
 			
-    			rm -rf /var/www/html/!(wizwizxui-timebot)
+    			#rm -rf /var/www/html/!(wizwizxui-timebot)
 
 	 		#touch /var/www/html/index.html
     			#echo "<!DOCTYPE html><html><head><title>My Website</title></head><body><h1>Hello, world!</h1></body></html>" > /var/www/html/index.html
