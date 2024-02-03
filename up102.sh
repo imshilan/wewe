@@ -96,10 +96,10 @@ do
 			echo " "
 			if [ "$answer" != "${answer#[Yy]}" ]; then
 			
-			cd /var/www/html/ && shopt -s extglob && rm -r !(wizwizxui-timebot)
+			#cd /var/www/html/ && shopt -s extglob && rm -r !(wizwizxui-timebot)
       
-	 		nano index.html
-    			echo "<!DOCTYPE html><html><head><title>My Website</title></head><body><h1>Hello, world!</h1></body></html>" > index.html
+	 		#nano index.html
+    			#echo "<!DOCTYPE html><html><head><title>My Website</title></head><body><h1>Hello, world!</h1></body></html>" > index.html
        
 			wait
 			    
