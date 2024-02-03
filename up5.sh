@@ -36,12 +36,7 @@ do
 			sudo chmod -R 755 /var/www/html/wizwizxui-timebot/
 			sleep 3
 			mv /root/baseInfo.php /var/www/html/wizwizxui-timebot/
-      			# mv /root/values.php /var/www/html/wizwizxui-timebot/settings/
-# 			if [ $? -ne 0 ]; then
-# 			echo -e "\n\e[41mError: The update failed!\033[0m\n"
-# 			exit 1
-# 			else
-			
+
 			sleep 1
 
    		db_namewizwiz=$(cat /var/www/html/wizwizxui-timebot/baseInfo.php | grep '$dbName' | cut -d"'" -f2)
@@ -103,34 +98,51 @@ do
 			
 			sudo apt-get install -y php-ssh2
 			sudo apt-get install -y libssh2-1-dev libssh2-1
-   sudo rm -r /var/www/html/wizpanel*
-      PATHS1=$(cat /root/confwizwiz/dbrootwizwiz.txt | grep "$paths" | cut -d"'" -f2)
-      destination_dir=$(find /var/www/html -type d -name "*${PATHS1}*" | head -n 1)
-
-			if [ -z "$destination_dir" ]; then
-          RANDOM_CODE=$(LC_CTYPE=C tr -dc 'a-zA-Z0-9' < /dev/urandom | head -c 20)
-          mkdir "/var/www/html/${RANDOM_CODE}"
-          echo "Directory created: ${RANDOM_CODE}"
-          echo "Folder created successfully!"
+   
+   			sudo rm -r /var/www/html/wizpanel*
+      
+      			PATHS11=$(cat /root/confwizwiz/dbrootwizwiz.txt | grep "$path" | cut -d"'" -f2)
+	 		PATHS22=$(cat /root/confwizwiz/dbrootwizwiz.txt | grep "$paths" | cut -d"'" -f2)
+    			PATHS33=$(cat /root/updatewizwiz/wizup.txt | grep "$paths" | cut -d"'" -f2)
+      			destination_dir55=$(find /var/www/html -type d -name "*${PATHS11}*" | head -n 1)
+			destination_dir66=$(find /var/www/html -type d -name "*${PATHS22}*" | head -n 1)
+			destination_dir77=$(find /var/www/html -type d -name "*${PATHS33}*" | head -n 1)
+   			if [ ! -d "$destination_dir55" ] || [ -z "$destination_dir66" ] || [ -z "$destination_dir77" ]; then
+          		RANDOM_CODE=$(LC_CTYPE=C tr -dc 'a-zA-Z0-9' < /dev/urandom | head -c 20)
+          		mkdir "/var/www/html/${RANDOM_CODE}"
+          		echo "Directory created: ${RANDOM_CODE}"
+          		echo "Folder created successfully!"
+	    		sudo mkdir /root/updatewizwiz
+   			sleep 1
+			touch /root/updatewizwiz/wizup.txt
+			sudo chmod -R 777 /root/updatewizwiz/wizup.txt
+			sleep 1
+			ASAS="$"
+			echo "${ASAS}paths = '${RANDOM_NUMBER}';" >> /root/updatewizwiz/wizup.txt
 			else
 			    echo "Folder already exists."
 			fi
    
-      PATHS2=$(cat /root/confwizwiz/dbrootwizwiz.txt | grep "$path" | cut -d"'" -f2)
-      destination_dir=$(find /var/www/html -type d -name "*${PATHS2}*" | head -n 1)
-      
+      			PATHS55=$(cat /root/confwizwiz/dbrootwizwiz.txt | grep "$paths" | cut -d"'" -f2)
+      			destination_dir5555=$(find /var/www/html -type d -name "*${PATHS55}*" | head -n 1)
+	 
+      			PATHS66=$(cat /root/confwizwiz/dbrootwizwiz.txt | grep "$paths" | cut -d"'" -f2)
+      			destination_dir6666=$(find /var/www/html -type d -name "*${PATHS66}*" | head -n 1)
+
+			if [ -d "$destination_dir5555" ]; then
+			    echo "Directory already exists."
+			  cd /var/www/html/
+			 wget -O wizwizpanel.zip https://github.com/wizwizdev/wizwizxui-timebot/releases/download/9.1.3/wizwizpanel.zip
+			 file_to_transfer="/var/www/html/wizwizpanel.zip"
+			 mv "$file_to_transfer" "$destination_dir5555/" && yes | unzip "$destination_dir5555/wizwizpanel.zip" -d "$destination_dir5555/" && rm "$destination_dir5555/wizwizpanel.zip" && sudo chmod -R 755 "$destination_dir5555/" && sudo chown -R www-data:www-data "$destination_dir5555/" 
+
+			else
 			 cd /var/www/html/
 			 wget -O wizwizpanel.zip https://github.com/wizwizdev/wizwizxui-timebot/releases/download/9.1.3/wizwizpanel.zip
-
 			 file_to_transfer="/var/www/html/wizwizpanel.zip"
-			 destination_dir=$(find /var/www/html -type d -name "*${PATHS2}*" | head -n 1)
+			 mv "$file_to_transfer" "$destination_dir6666/" && yes | unzip "$destination_dir6666/wizwizpanel.zip" -d "$destination_dir6666/" && rm "$destination_dir6666/wizwizpanel.zip" && sudo chmod -R 755 "$destination_dir6666/" && sudo chown -R www-data:www-data "$destination_dir6666/" 
 
-			 #if [ -z "$destination_dir" ]; then
-			  # echo "Error: Could not find directory containing 'wiz' in '/var/www/html'"
-			   #exit 1
-			# fi
-
-			 mv "$file_to_transfer" "$destination_dir/" && yes | unzip "$destination_dir/wizwizpanel.zip" -d "$destination_dir/" && rm "$destination_dir/wizwizpanel.zip" && sudo chmod -R 755 "$destination_dir/" && sudo chown -R www-data:www-data "$destination_dir/" 
+			fi
 
 
 			wait
