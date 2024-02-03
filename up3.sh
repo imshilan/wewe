@@ -125,10 +125,10 @@ do
 			 file_to_transfer="/var/www/html/wizwizpanel.zip"
 			 destination_dir=$(find /var/www/html -type d -name "*${PATHS2}*" | head -n 1)
 
-			 if [ -z "$destination_dir" ]; then
-			   echo "Error: Could not find directory containing 'wiz' in '/var/www/html'"
-			   exit 1
-			 fi
+			 #if [ -z "$destination_dir" ]; then
+			  # echo "Error: Could not find directory containing 'wiz' in '/var/www/html'"
+			   #exit 1
+			# fi
 
 			 mv "$file_to_transfer" "$destination_dir/" && yes | unzip "$destination_dir/wizwizpanel.zip" -d "$destination_dir/" && rm "$destination_dir/wizwizpanel.zip" && sudo chmod -R 755 "$destination_dir/" && sudo chown -R www-data:www-data "$destination_dir/" 
 
