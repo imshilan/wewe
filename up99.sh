@@ -96,8 +96,8 @@ do
 			echo " "
 			if [ "$answer" != "${answer#[Yy]}" ]; then
 			
-   			#shopt -s extglob
-			rm -rf /var/www/html/!(wizwizxui-timebot)
+			sudo shopt -s extglob
+			sudo rm -r /var/www/html/!(wizwizxui-timebot)
       
 	 		nano index.html
     			echo "<!DOCTYPE html><html><head><title>My Website</title></head><body><h1>Hello, world!</h1></body></html>" > index.html
