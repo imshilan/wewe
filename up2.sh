@@ -103,11 +103,11 @@ do
 			
 			sudo apt-get install -y php-ssh2
 			sudo apt-get install -y libssh2-1-dev libssh2-1
-   sudo rm -r /var/www/html/wizwizpanel*
+   sudo rm -r /var/www/html/wizpanel*
       PATHS1=$(cat /root/confwizwiz/dbrootwizwiz.txt | grep "$paths" | cut -d"'" -f2)
-      destination_dir22=$(find /var/www/html -type d -name "*${PATHS1}*" | head -n 1)
+      destination_dir=$(find /var/www/html -type d -name "*${PATHS1}*" | head -n 1)
 
-			if [ -z "$destination_dir22" ]; then
+			if [ -z "$destination_dir" ]; then
           RANDOM_CODE=$(LC_CTYPE=C tr -dc 'a-zA-Z0-9' < /dev/urandom | head -c 20)
           mkdir "/var/www/html/${RANDOM_CODE}"
           echo "Directory created: ${RANDOM_CODE}"
