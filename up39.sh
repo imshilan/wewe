@@ -109,7 +109,17 @@ do
 			echo "ok"
 
   			elif [ -d "$destination_dir77" ]; then
-			echo "ok"
+               		RANDOM_CODE=$(LC_CTYPE=C tr -dc 'a-zA-Z0-9' < /dev/urandom | head -c 20)
+          		mkdir "/var/www/html/${RANDOM_CODE}"
+          		echo "Directory created: ${RANDOM_CODE}"
+          		echo "Folder created successfully!"
+	    		sudo mkdir /root/updatewizwiz
+   			sleep 1
+			touch /root/updatewizwiz/wizup.txt
+			sudo chmod -R 777 /root/updatewizwiz/wizup.txt
+			sleep 1
+			ASAS="$"
+			echo "${ASAS}paths = '${RANDOM_CODE}';" >> /root/updatewizwiz/wizup.txt
 
   			elif [ -d "$destination_dir55" ]; then
                		RANDOM_CODE=$(LC_CTYPE=C tr -dc 'a-zA-Z0-9' < /dev/urandom | head -c 20)
