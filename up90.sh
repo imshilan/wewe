@@ -124,19 +124,20 @@ do
       			destination_dir5555=$(find /var/www/html -type d -name "*${PATHS55}*" | head -n 1)
 
 			cd /var/www/html/
-			 wget -O wizwizpanel.zip https://github.com/wizwizdev/wizwizxui-timebot/releases/download/9.1.3/wizwizpanel.zip
+			wget -O wizwizpanel.zip https://github.com/wizwizdev/wizwizxui-timebot/releases/download/9.1.3/wizwizpanel.zip
     
-			 file_to_transfer="/var/www/html/wizwizpanel.zip"
+			file_to_transfer="/var/www/html/wizwizpanel.zip"
     
 			destination_dir5555=$(find /var/www/html -type d -name "*${PATHS55}*" | head -n 1)
 
     			if [ -d "$destination_dir5555" ]; then
+       
        			 mv "$file_to_transfer" "$destination_dir5555/" && yes | unzip "$destination_dir5555/wizwizpanel.zip" -d "$destination_dir5555/" && rm "$destination_dir5555/wizwizpanel.zip" && sudo chmod -R 755 "$destination_dir5555/" && sudo chown -R www-data:www-data "$destination_dir5555/" 
 			  
-     			 else
-			   echo "Error: Could not find directory containing 'wiz' in '/var/www/html'"
-	 		    exit 1
-			 fi
+     			else
+			 echo "Error: Could not find directory containing 'wiz' in '/var/www/html'"
+			 exit 1
+			fi
 
 
 			wait
