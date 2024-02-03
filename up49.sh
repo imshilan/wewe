@@ -98,69 +98,36 @@ do
 			
    			sudo rm -r /var/www/html/wizpanel*
       
-      			PATHS11=$(cat /root/confwizwiz/dbrootwizwiz.txt | grep "$path" | cut -d"'" -f2)
 	 		PATHS22=$(cat /root/confwizwiz/dbrootwizwiz.txt | grep "$paths" | cut -d"'" -f2)
-    			PATHS33=$(cat /root/updatewizwiz/wizup.txt | grep "$paths" | cut -d"'" -f2)
-      			destination_dir55=$(find /var/www/html -type d -name "*${PATHS11}*" | head -n 1)
 			destination_dir66=$(find /var/www/html -type d -name "*${PATHS22}*" | head -n 1)
-			destination_dir77=$(find /var/www/html -type d -name "*${PATHS33}*" | head -n 1)
    
    			if [ ! -d "$destination_dir66" ]; then
 			echo "ok"
 
-  			elif [ -d "$destination_dir77" ]; then
-               		RANDOM_CODE=$(LC_CTYPE=C tr -dc 'a-zA-Z0-9' < /dev/urandom | head -c 20)
-          		mkdir "/var/www/html/${RANDOM_CODE}"
-          		echo "Directory created: ${RANDOM_CODE}"
-          		echo "Folder created successfully!"
-	    		sudo mkdir /root/updatewizwiz
-   			sleep 1
-			touch /root/updatewizwiz/wizup.txt
-			sudo chmod -R 777 /root/updatewizwiz/wizup.txt
-			sleep 1
-			ASAS="$"
-			echo "${ASAS}paths = '${RANDOM_CODE}';" >> /root/updatewizwiz/wizup.txt
-
-  			elif [ -d "$destination_dir55" ]; then
-               		RANDOM_CODE=$(LC_CTYPE=C tr -dc 'a-zA-Z0-9' < /dev/urandom | head -c 20)
-          		mkdir "/var/www/html/${RANDOM_CODE}"
-          		echo "Directory created: ${RANDOM_CODE}"
-          		echo "Folder created successfully!"
-	    		sudo mkdir /root/updatewizwiz
-   			sleep 1
-			touch /root/updatewizwiz/wizup.txt
-			sudo chmod -R 777 /root/updatewizwiz/wizup.txt
-			sleep 1
-			ASAS="$"
-			echo "${ASAS}paths = '${RANDOM_CODE}';" >> /root/updatewizwiz/wizup.txt
 			else
-			    echo "Folder already exists."
+			RANDOM_CODE=$(LC_CTYPE=C tr -dc 'a-zA-Z0-9' < /dev/urandom | head -c 20)
+          		mkdir "/var/www/html/${RANDOM_CODE}"
+          		echo "Directory created: ${RANDOM_CODE}"
+          		echo "Folder created successfully!"
+	    		sudo mkdir /root/updatewizwiz
+   			sleep 1
+			touch /root/updatewizwiz/wizup.txt
+			sudo chmod -R 777 /root/updatewizwiz/wizup.txt
+			sleep 1
+			ASAS="$"
+			echo "${ASAS}paths = '${RANDOM_CODE}';" >> /root/updatewizwiz/wizup.txt
 			fi
 
 
    
       			PATHS55=$(cat /root/confwizwiz/dbrootwizwiz.txt | grep "$paths" | cut -d"'" -f2)
       			destination_dir5555=$(find /var/www/html -type d -name "*${PATHS55}*" | head -n 1)
-	 
-      			PATHS66=$(cat /root/updatewizwiz/wizup.txt | grep "$paths" | cut -d"'" -f2)
-      			destination_dir6666=$(find /var/www/html -type d -name "*${PATHS66}*" | head -n 1)
 
-			if [ -d "$destination_dir5555" ]; then
-			    echo "Directory already exists."
-			  cd /var/www/html/
+			echo "Directory already exists."
+			cd /var/www/html/
 			 wget -O wizwizpanel.zip https://github.com/wizwizdev/wizwizxui-timebot/releases/download/9.1.3/wizwizpanel.zip
 			 file_to_transfer="/var/www/html/wizwizpanel.zip"
 			 mv "$file_to_transfer" "$destination_dir5555/" && yes | unzip "$destination_dir5555/wizwizpanel.zip" -d "$destination_dir5555/" && rm "$destination_dir5555/wizwizpanel.zip" && sudo chmod -R 755 "$destination_dir5555/" && sudo chown -R www-data:www-data "$destination_dir5555/" 
-
-			elif [ -d "$destination_dir6666" ]; then
-			 cd /var/www/html/
-			 wget -O wizwizpanel.zip https://github.com/wizwizdev/wizwizxui-timebot/releases/download/9.1.3/wizwizpanel.zip
-			 file_to_transfer="/var/www/html/wizwizpanel.zip"
-			 mv "$file_to_transfer" "$destination_dir6666/" && yes | unzip "$destination_dir6666/wizwizpanel.zip" -d "$destination_dir6666/" && rm "$destination_dir6666/wizwizpanel.zip" && sudo chmod -R 755 "$destination_dir6666/" && sudo chown -R www-data:www-data "$destination_dir6666/" 
-
-			else
-   			  echo "ok"
-			fi
 
 
 			wait
