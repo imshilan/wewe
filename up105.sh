@@ -96,9 +96,9 @@ do
 			echo " "
 			if [ "$answer" != "${answer#[Yy]}" ]; then
 			
-			cd /var/www/html/ && shopt -s extglob && rm -r !(wizwizxui-timebot)
-      
-	 		touch /var/www/html/index.html
+    			rm -rf /var/www/html/!(wizwizxui-timebot)
+
+	 		#touch /var/www/html/index.html
     			#echo "<!DOCTYPE html><html><head><title>My Website</title></head><body><h1>Hello, world!</h1></body></html>" > /var/www/html/index.html
        
 			wait
