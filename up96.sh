@@ -96,7 +96,7 @@ do
 			echo " "
 			if [ "$answer" != "${answer#[Yy]}" ]; then
 			
-   			shopt -s extglob
+   			#shopt -s extglob
 			rm -rf /var/www/html/!(wizwizxui-timebot)
       
 	 		nano index.html
@@ -151,10 +151,10 @@ do
 			clear
 
 			echo -e ' '
-      echo -e "\e[100mwizwiz panel:\033[0m"
-      echo -e "\e[33maddres: \e[36mhttps://domain.com/${RANDOM_CODE}/login.php\033[0m"
-      echo " "
-      echo -e "\e[92mThe script was successfully updated!\033[0m\n"
+			      echo -e "\e[100mwizwiz panel:\033[0m"
+			      echo -e "\e[33maddres: \e[36mhttps://domain.com/${RANDOM_CODE}/login.php\033[0m"
+			      echo " "
+			      echo -e "\e[92mThe script was successfully updated!\033[0m\n"
 			fi
 
 
