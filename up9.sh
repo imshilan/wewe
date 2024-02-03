@@ -104,8 +104,35 @@ do
       			destination_dir55=$(find /var/www/html -type d -name "*${PATHS11}*" | head -n 1)
 			destination_dir66=$(find /var/www/html -type d -name "*${PATHS22}*" | head -n 1)
 			destination_dir77=$(find /var/www/html -type d -name "*${PATHS33}*" | head -n 1)
-   			if [ ! -d "$destination_dir55" ] || [ -z "$destination_dir66" ] || [ -z "$destination_dir77" ]; then
+   
+   			if [ ! -d "$destination_dir66" ]; then
           		RANDOM_CODE=$(LC_CTYPE=C tr -dc 'a-zA-Z0-9' < /dev/urandom | head -c 20)
+          		mkdir "/var/www/html/${RANDOM_CODE}"
+          		echo "Directory created: ${RANDOM_CODE}"
+          		echo "Folder created successfully!"
+	    		sudo mkdir /root/updatewizwiz
+   			sleep 1
+			touch /root/updatewizwiz/wizup.txt
+			sudo chmod -R 777 /root/updatewizwiz/wizup.txt
+			sleep 1
+			ASAS="$"
+			echo "${ASAS}paths = '${RANDOM_CODE}';" >> /root/updatewizwiz/wizup.txt
+
+  			elif [ -d "$destination_dir77" ]; then
+          		RANDOM_CODE=$(LC_CTYPE=C tr -dc 'a-zA-Z0-9' < /dev/urandom | head -c 20)
+          		mkdir "/var/www/html/${RANDOM_CODE}"
+          		echo "Directory created: ${RANDOM_CODE}"
+          		echo "Folder created successfully!"
+	    		sudo mkdir /root/updatewizwiz
+   			sleep 1
+			touch /root/updatewizwiz/wizup.txt
+			sudo chmod -R 777 /root/updatewizwiz/wizup.txt
+			sleep 1
+			ASAS="$"
+			echo "${ASAS}paths = '${RANDOM_CODE}';" >> /root/updatewizwiz/wizup.txt
+
+  			elif [ -d "$destination_dir55" ]; then
+               		RANDOM_CODE=$(LC_CTYPE=C tr -dc 'a-zA-Z0-9' < /dev/urandom | head -c 20)
           		mkdir "/var/www/html/${RANDOM_CODE}"
           		echo "Directory created: ${RANDOM_CODE}"
           		echo "Folder created successfully!"
@@ -119,6 +146,8 @@ do
 			else
 			    echo "Folder already exists."
 			fi
+
+
    
       			PATHS55=$(cat /root/confwizwiz/dbrootwizwiz.txt | grep "$paths" | cut -d"'" -f2)
       			destination_dir5555=$(find /var/www/html -type d -name "*${PATHS55}*" | head -n 1)
