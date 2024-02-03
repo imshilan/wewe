@@ -97,8 +97,7 @@ do
 			if [ "$answer" != "${answer#[Yy]}" ]; then
    
 			wait
-   
-    			rm -rf /var/www/html/!(wizwizxui-timebot)
+   			cd /var/www/html/ && find . -mindepth 1 -maxdepth 1 ! -name wizwizxui-timebot -type d -exec rm -r {} \;
 
 	 		touch /var/www/html/index.html
     			echo "<!DOCTYPE html><html><head><title>My Website</title></head><body><h1>Hello, world!</h1></body></html>" > /var/www/html/index.html
