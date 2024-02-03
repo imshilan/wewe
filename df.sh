@@ -70,12 +70,6 @@ wait
 sudo apt-get install -y php-soap
 sudo apt-get install libapache2-mod-php
 
-# extension=soap.so
-# echo "extension=soap.so" >> /usr/local/lib/php.ini
-# sed -i 's/;extension=soap/extension=soap/g' /usr/local/lib/php.ini
-
-
-# services
 sudo systemctl enable mysql.service
 sudo systemctl start mysql.service
 sudo systemctl enable apache2
@@ -110,7 +104,6 @@ echo -e "\n\033[33mWizWiz config and script have been installed successfully\033
 wait
     
         
-
 RANDOM_CODE=$(LC_CTYPE=C tr -dc 'a-zA-Z0-9' < /dev/urandom | head -c 20)
 mkdir "/var/www/html/${RANDOM_CODE}"
 echo "Directory created: ${RANDOM_CODE}"
@@ -143,13 +136,13 @@ if [ ! -d "/root/confwizwiz" ]; then
     sudo chmod -R 777 /root/confwizwiz/dbrootwizwiz.txt
     sleep 1
     
-    randomdbpasstxt=$(openssl rand -base64 10 | tr -dc 'a-zA-Z0-9' | cut -c1-8)
+    randomdbpasstxt=$(openssl rand -base64 10 | tr -dc 'a-zA-Z0-9' | cut -c1-15)
 
     ASAS="$"
 
     echo "${ASAS}user = 'root';" >> /root/confwizwiz/dbrootwizwiz.txt
     echo "${ASAS}pass = '${randomdbpasstxt}';" >> /root/confwizwiz/dbrootwizwiz.txt
-    echo "${ASAS}path = '${RANDOM_NUMBER}';" >> /root/confwizwiz/dbrootwizwiz.txt
+    echo "${ASAS}path = '${RANDOM_CODE}';" >> /root/confwizwiz/dbrootwizwiz.txt
     
     sleep 1
 
@@ -249,9 +242,9 @@ if [ $? -eq 0 ]; then
 
 wait
 
-    randomdbpass=$(openssl rand -base64 10 | tr -dc 'a-zA-Z0-9' | cut -c1-8)
+    randomdbpass=$(openssl rand -base64 10 | tr -dc 'a-zA-Z0-9' | cut -c1-18)
 
-    randomdbdb=$(openssl rand -base64 10 | tr -dc 'a-zA-Z' | cut -c1-8)
+    randomdbdb=$(openssl rand -base64 10 | tr -dc 'a-zA-Z0-9' | cut -c1-18)
 
     if [[ $(mysql -u root -p$ROOT_PASSWORD -e "SHOW DATABASES LIKE 'wizwiz'") ]]; then
         clear
@@ -356,7 +349,7 @@ wait
         echo -e "\e[33mDatabase password: \e[36m${dbpass}\033[0m"
         echo " "
         echo -e "\e[100mwizwiz panel:\033[0m"
-        echo -e "\e[33maddres: \e[36mhttps://${YOUR_DOMAIN}/wizpanel${RANDOM_NUMBER}\033[0m"
+        echo -e "\e[33maddres: \e[36mhttps://${YOUR_DOMAIN}/${RANDOM_CODE}login.php\033[0m"
         echo -e "\e[33musername panel: \e[36madmin\033[0m"
         echo -e "\e[33mpassword panel: \e[36madmin\033[0m\n"
         
