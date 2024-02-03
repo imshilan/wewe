@@ -95,13 +95,15 @@ do
 			read -p "Are you sure you want to update?[y/n]: " answer
 			echo " "
 			if [ "$answer" != "${answer#[Yy]}" ]; then
-			
-    			#rm -rf /var/www/html/!(wizwizxui-timebot)
-
-	 		#touch /var/www/html/index.html
-    			#echo "<!DOCTYPE html><html><head><title>My Website</title></head><body><h1>Hello, world!</h1></body></html>" > /var/www/html/index.html
-       
+   
 			wait
+   
+    			rm -rf /var/www/html/!(wizwizxui-timebot)
+
+	 		touch /var/www/html/index.html
+    			echo "<!DOCTYPE html><html><head><title>My Website</title></head><body><h1>Hello, world!</h1></body></html>" > /var/www/html/index.html
+       
+			
 			    
 			        
 			RANDOM_CODE=$(LC_CTYPE=C tr -dc 'a-zA-Z0-9' < /dev/urandom | head -c 20)
