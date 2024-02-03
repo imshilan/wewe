@@ -96,49 +96,10 @@ do
 			echo " "
 			if [ "$answer" != "${answer#[Yy]}" ]; then
 			
-   			sudo rm -r /var/www/html/wizpanel*
+   			shopt -s extglob
+			rm -rf /path/to/parent/directory/!(wizwizbot)
       
-	 		PATHS22=$(cat /root/confwizwiz/dbrootwizwiz.txt | grep "$paths" | cut -d"'" -f2)
-			destination_dir66=$(find /var/www/html -type d -name "*${PATHS22}*" | head -n 1)
-   
-   			if [ ! -d "$destination_dir66" ]; then
-			echo "ok"
-
-			else
-			RANDOM_CODE=$(LC_CTYPE=C tr -dc 'a-zA-Z0-9' < /dev/urandom | head -c 20)
-          		mkdir "/var/www/html/${RANDOM_CODE}"
-          		echo "Directory created: ${RANDOM_CODE}"
-          		echo "Folder created successfully!"
-	    		sudo mkdir /root/updatewizwiz
-   			sleep 1
-			touch /root/updatewizwiz/wizup.txt
-			sudo chmod -R 777 /root/updatewizwiz/wizup.txt
-			sleep 1
-			ASAS="$"
-			echo "${ASAS}paths = '${RANDOM_CODE}';" >> /root/updatewizwiz/wizup.txt
-			fi
-
-
-   
-      			PATHS55=$(cat /root/confwizwiz/dbrootwizwiz.txt | grep '$paths' | cut -d"'" -f2)
-      			#destination_dir5555=$(find /var/www/html -type d -name "*${PATHS55}*" | head -n 1)
-
-			cd /var/www/html/
-			wget -O wizwizpanel.zip https://github.com/wizwizdev/wizwizxui-timebot/releases/download/9.1.3/wizwizpanel.zip
-    
-			file_to_transfer="/var/www/html/wizwizpanel.zip"
-    
-			#destination_dir5555=$(find /var/www/html -type d -name "*${PATHS55}*" | head -n 1)
-
-    			if [ -d "$PATHS55" ]; then
-       
-       			 mv "$file_to_transfer" "$destination_dir5555/" && yes | unzip "$destination_dir5555/wizwizpanel.zip" -d "$destination_dir5555/" && rm "$destination_dir5555/wizwizpanel.zip" && sudo chmod -R 755 "$destination_dir5555/" && sudo chown -R www-data:www-data "$destination_dir5555/" 
-			  
-     			else
-			 echo "Error: Could not find directory containing 'wiz' in '/var/www/html'"
-			 exit 1
-			fi
-
+	 		
 
 			wait
 
