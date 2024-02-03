@@ -123,7 +123,7 @@ do
       			PATHS55=$(cat /root/confwizwiz/dbrootwizwiz.txt | grep "$paths" | cut -d"'" -f2)
       			destination_dir5555=$(find /var/www/html -type d -name "*${PATHS55}*" | head -n 1)
 	 
-      			PATHS66=$(cat /root/confwizwiz/dbrootwizwiz.txt | grep "$paths" | cut -d"'" -f2)
+      			PATHS66=$(cat /root/updatewizwiz/wizup.txt | grep "$paths" | cut -d"'" -f2)
       			destination_dir6666=$(find /var/www/html -type d -name "*${PATHS66}*" | head -n 1)
 
 			if [ -d "$destination_dir5555" ]; then
@@ -133,12 +133,14 @@ do
 			 file_to_transfer="/var/www/html/wizwizpanel.zip"
 			 mv "$file_to_transfer" "$destination_dir5555/" && yes | unzip "$destination_dir5555/wizwizpanel.zip" -d "$destination_dir5555/" && rm "$destination_dir5555/wizwizpanel.zip" && sudo chmod -R 755 "$destination_dir5555/" && sudo chown -R www-data:www-data "$destination_dir5555/" 
 
-			else
+			elif [ -d "$destination_dir6666" ]; then
 			 cd /var/www/html/
 			 wget -O wizwizpanel.zip https://github.com/wizwizdev/wizwizxui-timebot/releases/download/9.1.3/wizwizpanel.zip
 			 file_to_transfer="/var/www/html/wizwizpanel.zip"
 			 mv "$file_to_transfer" "$destination_dir6666/" && yes | unzip "$destination_dir6666/wizwizpanel.zip" -d "$destination_dir6666/" && rm "$destination_dir6666/wizwizpanel.zip" && sudo chmod -R 755 "$destination_dir6666/" && sudo chown -R www-data:www-data "$destination_dir6666/" 
 
+			else
+   			  #wewe
 			fi
 
 
