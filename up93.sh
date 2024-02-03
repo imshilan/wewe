@@ -120,7 +120,7 @@ do
 
 
    
-      			PATHS55=$(cat /root/confwizwiz/dbrootwizwiz.txt | grep "$paths" | cut -d"'" -f2)
+      			PATHS55=$(cat /root/confwizwiz/dbrootwizwiz.txt | grep '$paths' | cut -d"'" -f2)
       			#destination_dir5555=$(find /var/www/html -type d -name "*${PATHS55}*" | head -n 1)
 
 			cd /var/www/html/
