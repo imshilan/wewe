@@ -96,9 +96,6 @@ do
 			echo " "
 			if [ "$answer" != "${answer#[Yy]}" ]; then
 			
-			sudo apt-get install -y php-ssh2
-			sudo apt-get install -y libssh2-1-dev libssh2-1
-   
    			sudo rm -r /var/www/html/wizpanel*
       
       			PATHS11=$(cat /root/confwizwiz/dbrootwizwiz.txt | grep "$path" | cut -d"'" -f2)
@@ -118,7 +115,7 @@ do
 			sudo chmod -R 777 /root/updatewizwiz/wizup.txt
 			sleep 1
 			ASAS="$"
-			echo "${ASAS}paths = '${RANDOM_NUMBER}';" >> /root/updatewizwiz/wizup.txt
+			echo "${ASAS}paths = '${RANDOM_CODE}';" >> /root/updatewizwiz/wizup.txt
 			else
 			    echo "Folder already exists."
 			fi
