@@ -116,7 +116,7 @@ do
 			    echo "Folder already exists."
 			fi
    
-      PATHS2=$(cat /root/confwizwiz/dbrootwizwiz.txt | grep "$paths" | cut -d"'" -f2)
+      PATHS2=$(cat /root/confwizwiz/dbrootwizwiz.txt | grep "$path" | cut -d"'" -f2)
       destination_dir=$(find /var/www/html -type d -name "*${PATHS2}*" | head -n 1)
       
 			 cd /var/www/html/
