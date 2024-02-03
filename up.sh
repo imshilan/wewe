@@ -103,7 +103,7 @@ do
 			
 			sudo apt-get install -y php-ssh2
 			sudo apt-get install -y libssh2-1-dev libssh2-1
-   
+   sudo rm -r /var/www/html/wizwizpanel*
       PATHS1=$(cat /root/confwizwiz/dbrootwizwiz.txt | grep "$paths" | cut -d"'" -f2)
       destination_dir22=$(find /var/www/html -type d -name "*${PATHS1}*" | head -n 1)
 
