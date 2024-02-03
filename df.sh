@@ -142,7 +142,7 @@ if [ ! -d "/root/confwizwiz" ]; then
 
     echo "${ASAS}user = 'root';" >> /root/confwizwiz/dbrootwizwiz.txt
     echo "${ASAS}pass = '${randomdbpasstxt}';" >> /root/confwizwiz/dbrootwizwiz.txt
-    echo "${ASAS}path = '${RANDOM_CODE}';" >> /root/confwizwiz/dbrootwizwiz.txt
+    echo "${ASAS}paths = '${RANDOM_CODE}';" >> /root/confwizwiz/dbrootwizwiz.txt
     
     sleep 1
 
