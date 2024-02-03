@@ -140,7 +140,7 @@ do
 			 mv "$file_to_transfer" "$destination_dir6666/" && yes | unzip "$destination_dir6666/wizwizpanel.zip" -d "$destination_dir6666/" && rm "$destination_dir6666/wizwizpanel.zip" && sudo chmod -R 755 "$destination_dir6666/" && sudo chown -R www-data:www-data "$destination_dir6666/" 
 
 			else
-   			  #wewe
+   			  echo "ok"
 			fi
 
 
