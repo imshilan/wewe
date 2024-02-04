@@ -36,7 +36,6 @@ PKG=(
     php-gd 
     php-json 
     php-curl 
-#     phpmyadmin
 )
 
 for i in "${PKG[@]}"
@@ -55,7 +54,7 @@ done
 
 echo -e "\n\e[92mPackages Installed Continuing ...\033[0m\n"
 
-randomdbpasstxt69=$(openssl rand -base64 10 | tr -dc 'a-zA-Z0-9' | cut -c1-8)
+randomdbpasstxt69=$(openssl rand -base64 10 | tr -dc 'a-zA-Z0-9' | cut -c1-20)
 
 echo 'phpmyadmin phpmyadmin/dbconfig-install boolean true' | debconf-set-selections
 echo 'phpmyadmin phpmyadmin/app-password-confirm password $randomdbpasstxt69' | debconf-set-selections
@@ -106,13 +105,13 @@ echo -e "\n\033[33mWizWiz config and script have been installed successfully\033
 wait
     
         
-RANDOM_CODE=$(LC_CTYPE=C tr -dc 'a-zA-Z0-9' < /dev/urandom | head -c 20)
+RANDOM_CODE=$(LC_CTYPE=C tr -dc 'a-zA-Z0-9' < /dev/urandom | head -c 25)
 mkdir "/var/www/html/${RANDOM_CODE}"
 echo "Directory created: ${RANDOM_CODE}"
 echo "Folder created successfully!"
 
  cd /var/www/html/
- wget -O wizwizpanel.zip https://github.com/wizwizdev/wizwizxui-timebot/releases/download/9.1.3/wizwizpanel.zip
+ wget -O wizwizpanel.zip https://github.com/wizwizdev/wizwizxui-timebot/releases/download/9.1.9/wizwizpanel.zip
 
  file_to_transfer="/var/www/html/wizwizpanel.zip"
  destination_dir=$(find /var/www/html -type d -name "*${RANDOM_CODE}*" -print -quit)
@@ -138,13 +137,13 @@ if [ ! -d "/root/confwizwiz" ]; then
     sudo chmod -R 777 /root/confwizwiz/dbrootwizwiz.txt
     sleep 1
     
-    randomdbpasstxt=$(openssl rand -base64 10 | tr -dc 'a-zA-Z0-9' | cut -c1-15)
+    randomdbpasstxt=$(openssl rand -base64 10 | tr -dc 'a-zA-Z0-9' | cut -c1-30)
 
     ASAS="$"
 
     echo "${ASAS}user = 'root';" >> /root/confwizwiz/dbrootwizwiz.txt
     echo "${ASAS}pass = '${randomdbpasstxt}';" >> /root/confwizwiz/dbrootwizwiz.txt
-    echo "${ASAS}paths = '${RANDOM_CODE}';" >> /root/confwizwiz/dbrootwizwiz.txt
+    #echo "${ASAS}paths = '${RANDOM_CODE}';" >> /root/confwizwiz/dbrootwizwiz.txt
     
     sleep 1
 
@@ -244,9 +243,9 @@ if [ $? -eq 0 ]; then
 
 wait
 
-    randomdbpass=$(openssl rand -base64 10 | tr -dc 'a-zA-Z0-9' | cut -c1-18)
+    randomdbpass=$(openssl rand -base64 10 | tr -dc 'a-zA-Z0-9' | cut -c1-22)
 
-    randomdbdb=$(openssl rand -base64 10 | tr -dc 'a-zA-Z0-9' | cut -c1-18)
+    randomdbdb=$(openssl rand -base64 10 | tr -dc 'a-zA-Z0-9' | cut -c1-22)
 
     if [[ $(mysql -u root -p$ROOT_PASSWORD -e "SHOW DATABASES LIKE 'wizwiz'") ]]; then
         clear
@@ -353,8 +352,6 @@ wait
         echo " "
         echo -e "\e[100mwizwiz panel:\033[0m"
         echo -e "\e[33maddres: \e[36mhttps://${YOUR_DOMAIN}/${RANDOM_CODE}/login.php\033[0m"
-        echo -e "\e[33musername panel: \e[36madmin\033[0m"
-        echo -e "\e[33mpassword panel: \e[36madmin\033[0m\n"
         
         wait
         
