@@ -27,7 +27,7 @@ echo -e "\e[92mThe server was successfully updated ...\033[0m\n"
 
 sudo add-apt-repository ppa:ondrej/php
 sudo apt update
-sudo apt install php8.1 libapache2-mod-php mysql-server apache2 php-mbstring php-zip php-gd php-json php-curl
+sudo apt install php8.3 libapache2-mod-php mysql-server apache2 php-mbstring php-zip php-gd php-json php-curl
 sudo systemctl restart apache2
 
 
